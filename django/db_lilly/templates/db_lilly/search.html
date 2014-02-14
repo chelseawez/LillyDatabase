@@ -1,0 +1,9 @@
+{% extends "db_lilly/base.html" %}
+{% block heading %}Search{% endblock %}
+{% block search %}
+<p>No search fields are required, but the use of more will result in more detailed results.</p>
+	    <form action="{% url 'db_lilly.views.getResultForm' %}"  method="post">{% csrf_token %}
+		{{form.as_p }}
+            <input type="submit" value="Submit" />
+            </form>
+{% endblock %}

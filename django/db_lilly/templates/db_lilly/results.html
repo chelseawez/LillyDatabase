@@ -1,0 +1,15 @@
+{% extends "db_lilly/search.html" %}
+{% block content %}
+<h4>Search Results</h4>
+<p>
+{% for item in results %}
+    {% if item.film_or_tv == "TV" %}
+    <li><a href="{% url 'db_lilly.views.tv' item.mediaid %}">{{item.primary_title}}</a></li>
+    {% else %}
+<li><a href="{% url 'db_lilly.views.film' item.mediaid %}">{{item.primary_title}}</a></li>
+    {% endif %}
+{% endfor %}
+</p>
+<p> {{results.count}} Result{{results|pluralize}} found in the database matching your selections.
+</p>
+{% endblock %}

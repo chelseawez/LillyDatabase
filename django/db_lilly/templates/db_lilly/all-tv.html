@@ -1,0 +1,32 @@
+{% extends "db_lilly/base.html" %}
+
+{% block heading %}All TV Shows{% endblock %}
+
+{% block content %}
+
+<p>
+<ul>
+{% for show in tv_shows %}
+   <li><a href="{% url 'db_lilly.views.tv' show.mediaid%}">{{show.primary_title}}</a></li>
+{% endfor %}
+</ul>
+<br/>
+<table>
+<tr>
+   {% for column in table.columns %}
+     <th><a href="?sort={{column.name_toggled}}">{{column}}</a></th>
+   {% endfor %}
+</tr>
+   {% for row in tables.rows %}
+      <tr>
+         {% for value in row %}
+              <td>{{value}}</td>
+         {% endfor %}
+      </tr>
+   {% endfor %}
+</table>
+<br/>
+{{tv_shows.count}} TV Show{{tv_shows|pluralize}} found in the database.
+</p>
+
+{% endblock %}

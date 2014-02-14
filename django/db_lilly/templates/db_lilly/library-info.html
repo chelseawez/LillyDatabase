@@ -1,0 +1,52 @@
+{% extends "db_lilly/base.html" %}
+
+{% block heading %}Library Info{% endblock %}
+
+{% block content %}
+<p>
+Lilly website: <a href="http://library.duke.edu/lilly/">library.duke.edu/lilly</a><br/>
+Library hours: <a href="http://library.duke.edu/about/hours/">library.duke.edu/about/hours</a>
+<br/>
+<br/>
+
+<b>FAQs</b><br/>
+<br/>
+
+<i>How long are loans?</i><br/>
+<br/>
+Most loans last until 11:59pm on the third day after you check it out. You will recieve an email reminder on the day it is due. If the DVD is Limited Circulation** or on Closed Reserve, however, the loan time will be 3 hours -- and it has to stay in the library.
+<br/><br/>
+** Faculty have 3 day borrowing privileges for Limited Circulatation.
+<br/><br/><br/>
+
+<i>Can I renew my loan?</i><br/>
+<br/>
+You can renew your DVD once online, under <a href="https://library.duke.edu/librarycatalog/login/?next=/librarycatalog/account/">Manage My Accounts</a>. You get an additional 3 days from the day you renew, so if you want the full possible 6 days, renew on the day it's due.
+<br/><br/>
+NOTE: There is a 24-hour hold placed after you return a DVD, during which you will be unable to check out the same copy again until the 24 hour period is up.
+<br/><br/><br/>
+
+<i>Can I request a DVD?</i><br/>
+<br/>
+Lilly DVDs cannot be requested.
+<br/><br/>
+If a DVD is at LSC (Library Service Center, the offsite storage facility), then you will have to request that the DVD is sent to you. This has to be done on the Library's site -- start at the homepage and then search for your title.
+<br/><br/><br/>
+
+<i>How much is a fine?</i><br/>
+<br/>
+A regular loan DVD is $5 per day, per DVD. A Limited Circulation or Closed Reserve DVD, on the other hand, is $1 per hour that it's late.
+<br/><br/><br/>
+
+<i>Where can I return the DVD?</i><br/>
+<br/>
+All Lilly DVDs MUST be returned to Lilly!
+<br/><br/><br/>
+
+<i>How many DVDs can I check out?</i><br/>
+<br/>
+You can check out 1 <a href="{% url 'db_lilly.views.devil_dvds' %}">Devil DVD</a> and 3 regular (non-Devil) DVDs for a total of 4 DVDs altogether.
+<br/>
+
+</p>
+{% endblock %}

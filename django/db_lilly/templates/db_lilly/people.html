@@ -1,0 +1,33 @@
+{% extends "db_lilly/base.html" %}
+
+{% block heading %}{{person}}{% endblock %}
+
+{% block content %}
+
+<p>
+{% if actor %}
+Acted in:
+{% for a in actor %}
+{% if a.mediaid.film_or_tv == "TV" %}
+<li><a href="{% url 'db_lilly.views.tv' a.mediaid.mediaid %}">{{a.mediaid.primary_title}}</a></li>
+{% else %}
+<li><a href="{% url 'db_lilly.views.film' a.mediaid.mediaid %}">{{a.mediaid.primary_title}}</a></li>
+{% endif %}
+{% endfor %}
+<br/>
+{% endif %}
+
+{% if director %}
+Directed:
+{% for d in director %}
+{% if d.mediaid.film_or_tv == "TV" %}
+<li><a href="{% url 'db_lilly.views.tv' d.mediaid.mediaid %}">{{d.mediaid.primary_title}}</a></li>
+{% else %}
+<li><a href="{% url 'db_lilly.views.film' d.mediaid.mediaid %}">{{d.mediaid.primary_title}}</a></li>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+</p>
+
+{% endblock %}

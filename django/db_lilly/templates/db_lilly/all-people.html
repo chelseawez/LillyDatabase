@@ -1,0 +1,13 @@
+{% extends "db_lilly/base.html" %}
+
+{% block heading %}All Cast{% endblock %}
+
+{% block content %}
+<p>
+<ul>
+{% for person in people %}
+   <li> <a href="{% url 'db_lilly.views.people' person %}">{{person}}</a></li>
+{% endfor %}
+</ul>
+</p>
+{% endblock %}

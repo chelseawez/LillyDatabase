@@ -1,0 +1,18 @@
+{% extends "db_lilly/base.html" %}
+
+{% block heading %}All Filmed Resources{% endblock %}
+
+{% block content %}
+<p>Click on an item below to view more information:
+<ul>
+{% for dvd in dvds %}
+{% if dvd.film_or_tv = "TV" %}
+    <li><a href="{% url 'db_lilly.views.tv' dvd.mediaid %}">{{dvd.primary_title}}</a></li>
+{% else %}
+    <li><a href="{% url 'db_lilly.views.film' dvd.mediaid %}">{{dvd.primary_title}}</a></li>
+{% endif %}
+{% endfor %}
+</ul>
+{{dvds.count}} Item{{dvds|pluralize}} found in the database.
+</p>
+{% endblock %}

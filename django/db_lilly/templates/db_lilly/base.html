@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  {% load extras %}
+  <head>
+    <title>Lilly Library Movie Filter</title>
+    <meta name="description" content="A helpful tool to filter available movies based on your interests"/>
+    <meta name="keywords" content="django, db-lilly"/>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    <link rel="stylesheet" href="{{STATIC_URL}}db_lilly/css/style.css" type="text/css" media="screen"/>
+    <script type="text/javascript" src="{{STATIC_URL}}db_lilly/js/jquery-1.7.2.min.js"></script>
+    {% block script %}{% endblock %}
+  </head>
+  <body>
+    <h1><a href="{% url 'db_lilly.views.home' %}"><img src="{{STATIC_URL}}db_lilly/img/lilly_title.jpg" width="75%" height="75%"/></a></h1>
+    <hr/>
+<div id="sidebar">
+    {% block sidebar %}
+        <ul>
+            <li><a href="{% url 'db_lilly.views.home' %}">Home</a></li>
+            <li><a href="{% url 'db_lilly.views.library_info' %}">Library Info</a></li>
+            <li><a href="{% url 'db_lilly.views.getResultForm' %}">Search</a></li>
+        </ul>
+    {% endblock %}
+    <hr/>
+</div>
+    <h2 id="heading">{% block heading %}{% endblock %}</h2>
+    <h3>{% block tagline %}{% endblock %}</h3>
+    {% block search %}{% endblock %}
+    {% block results %}{% endblock %}
+{% comment %}
+    {% if user.is_authenticated %}
+      <p>Welcome, {{user|user_greeting_name}}!<br/>
+         You are authenticated as
+         {% for auth in social_auth.associated %}
+           {{auth.user}} ({{auth.provider}}){% if forloop.last %}.{% else %}, {% endif %}
+         {% empty %}
+           {{user}} (local Django).
+         {% endfor %}
+         </p>
+    {% endif %}
+    {% block login %}
+      {% if not user.is_authenticated %}
+        <p><a href="{% url 'db_lilly.views.login' %}?next={{request.get_full_path}}">Login</a></p>
+      {% else %}
+        <p><a href="{% url 'db_lilly.views.logout' %}">Logout</a></p>
+      {% endif %}
+    {% endblock %}
+{% endcomment %}
+    <div id="content">{% block content %}{% endblock %}</div>
+    <hr/>
+  </body>
+  <footer>
+    <p>This site was created by Noelle Suaifan, Joanna Kim, and Chelsea Wezensky in Fall 2013.</p>
+    <p><img src="{{STATIC_URL}}db_lilly/img/tmdb-logo-1.png" style="float:right"/>This product uses the TMDb API but is not endorsed or certified by <a href="https://www.themoviedb.org">TMDb</a>.</p>
+  </footer>
+</html>

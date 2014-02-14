@@ -1,0 +1,16 @@
+{% extends "db_lilly/base.html" %}
+
+{% block heading %}All Films{% endblock %}
+
+{% block content %}
+
+<p>
+<ul>
+{% for film in films %}
+   <li><a href="{% url 'db_lilly.views.film' film.mediaid%}">{{film.primary_title}}</a></li>
+{% endfor %}
+</ul>
+{{films.count}} Film{{films|pluralize}} found in the database.
+</p>
+
+{% endblock %}

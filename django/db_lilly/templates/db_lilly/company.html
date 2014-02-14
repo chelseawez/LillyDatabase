@@ -1,0 +1,17 @@
+{% extends "db_lilly/base.html" %}
+
+{% block heading %}{{name}}{% endblock %}
+
+{% block content %}
+
+<p>
+{% for com in company %}
+   {% if com.mediaid.film_or_tv == "TV" %}
+       <li><a href="{% url 'db_lilly.views.tv' com.mediaid.mediaid %}">{{com.mediaid.primary_title}}</a></li>
+   {% else %}
+       <li><a href="{% url 'db_lilly.views.film' com.mediaid.mediaid %}">{{com.mediaid.primary_title}}</a></li>
+   {% endif %}
+{% endfor %}
+</p>
+
+{% endblock %}
